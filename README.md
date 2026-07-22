@@ -33,14 +33,14 @@ Or click **Code → Download ZIP** on GitHub and extract the folder.
 7. Select **JSON** as the format
 8. Download and unzip the archive
 
-Inside the download, find these files:
+Inside the download, find these two files and copy them into this project folder:
 
 ```text
 followers_1.json
 following.json
 ```
 
-Move both files into the project folder so it looks like:
+Your folder should look like this:
 
 ```text
 igchecker/
@@ -48,6 +48,19 @@ igchecker/
 ├── followers_1.json
 └── following.json
 ```
+
+The script also reads these optional files when they are in the folder:
+
+```text
+blocked_profiles.json
+hide_story_from.json
+pending_follow_requests.json
+recent_follow_requests.json
+recently_unfollowed_profiles.json
+removed_suggestions.json
+```
+
+They are included as separate sections in `relationship_report.txt`. They do not change the “doesn't follow you back” total, because they describe blocks, story privacy, follow requests, accounts you unfollowed, or suggestions—not accounts that currently follow you.
 
 ## Run
 
@@ -57,7 +70,7 @@ Open a terminal inside the project folder and run:
 python3 checker.py
 ```
 
-The script will print every account you follow that doesn't follow you back.
+The script will print every account you follow that doesn't follow you back. It saves that list to `not_following_back.txt` and saves all available relationship categories to `relationship_report.txt`.
 
 ## Privacy
 
