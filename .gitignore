@@ -4,3 +4,7 @@
 # Generated reports are local-only.
 user_output_data/
 *.txt
+
+
+#pycache
+__pycache__
