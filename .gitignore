@@ -1,3 +1,6 @@
 # Instagram export data contains personal account information.
 *.json
 
+# Generated reports are local-only.
+user_output_data/
+*.txt

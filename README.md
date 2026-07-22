@@ -60,7 +60,7 @@ recently_unfollowed_profiles.json
 removed_suggestions.json
 ```
 
-They are included as separate sections in `relationship_report.txt`. They do not change the “doesn't follow you back” total, because they describe blocks, story privacy, follow requests, accounts you unfollowed, or suggestions—not accounts that currently follow you.
+They are included as separate sections in `user_output_data/relationship_report.txt`. They do not change the “doesn't follow you back” total, because they describe blocks, story privacy, follow requests, accounts you unfollowed, or suggestions—not accounts that currently follow you.
 
 ## Run
 
@@ -70,7 +70,7 @@ Open a terminal inside the project folder and run:
 python3 checker.py
 ```
 
-The script will print every account you follow that doesn't follow you back. It saves that list to `not_following_back.txt` and saves all available relationship categories to `relationship_report.txt`.
+The script will print every account you follow that doesn't follow you back. It saves that list to `user_output_data/not_following_back.txt` and saves all available relationship categories to `user_output_data/relationship_report.txt`. The output folder is created automatically and is ignored by Git.
 
 ## Privacy
 

@@ -4,8 +4,9 @@ from pathlib import Path
 
 FOLLOWERS_FILE = Path("followers_1.json")
 FOLLOWING_FILE = Path("following.json")
-OUTPUT_FILE = Path("not_following_back.txt")
-REPORT_FILE = Path("relationship_report.txt")
+OUTPUT_DIRECTORY = Path("user_output_data")
+OUTPUT_FILE = OUTPUT_DIRECTORY / "not_following_back.txt"
+REPORT_FILE = OUTPUT_DIRECTORY / "relationship_report.txt"
 
 EXTRA_RELATIONSHIP_FILES = {
     "Blocked profiles": Path("blocked_profiles.json"),
@@ -80,6 +81,7 @@ def extract_followers(followers_data) -> set[str]:
 
 def save_results(usernames: list[str]) -> None:
     """Save the usernames to a text file."""
+    OUTPUT_DIRECTORY.mkdir(exist_ok=True)
     with OUTPUT_FILE.open("w", encoding="utf-8") as file:
         for username in usernames:
             file.write(f"{username}\n")
@@ -104,6 +106,7 @@ def save_relationship_report(
     not_following_back: list[str], extra_relationships: dict[str, set[str]]
 ) -> None:
     """Save the main result and every available extra relationship category."""
+    OUTPUT_DIRECTORY.mkdir(exist_ok=True)
     with REPORT_FILE.open("w", encoding="utf-8") as file:
         file.write("Accounts you follow that do not follow you back\n")
         file.write("=" * 47 + "\n")
@@ -140,7 +143,8 @@ def main() -> None:
 
     save_results(not_following_back)
     save_relationship_report(not_following_back, extra_relationships)
-    print(f"\nResults saved to {OUTPUT_FILE.name} and {REPORT_FILE.name}")
+    print(f"\nResults saved to {OUTPUT_FILE} and {REPORT_FILE}")
+    print("In other words check the foder user_output_data for results")
 
 
 if __name__ == "__main__":
