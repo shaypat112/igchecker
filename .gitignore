@@ -1,0 +1,3 @@
+# Instagram export data contains personal account information.
+*.json
+
